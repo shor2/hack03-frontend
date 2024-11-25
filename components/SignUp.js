@@ -4,10 +4,12 @@ import { useDispatch, useSelector } from 'react-redux';
 import { login } from '../reducers/user';
 import Image from 'next/image';
 import styles from '../styles/SignUp.module.css';
+require('dotenv').config();
 
 function SignUp() {
   const dispatch = useDispatch();
   const user = useSelector((state) => state.user.value);
+  const apiUrl = process.env.API_URL;
 
   // Redirect to /home if logged in
   const router = useRouter();
@@ -20,7 +22,7 @@ function SignUp() {
   const [password, setPassword] = useState('');
 
   const handleSubmit = () => {
-    fetch('http://${BACKEND_SERVER}:3000/users/signup', {
+    fetch('${apiUrl}:3000/users/signup', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ firstName, username, password }),

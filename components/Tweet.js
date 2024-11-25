@@ -6,13 +6,15 @@ import Link from 'next/link';
 import Image from 'next/image';
 import Moment from 'react-moment';
 import styles from '../styles/Tweet.module.css';
+require('dotenv').config();
 
 function Tweet(props) {
   const dispatch = useDispatch();
   const user = useSelector((state) => state.user.value);
+  const apiUrl = process.env.API_URL;
 
   const handleLike = () => {
-    fetch('http://${BACKEND_SERVER}:3000/tweets/like', {
+    fetch('${apiUrl}:3000/tweets/like', {
       method: 'PUT',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ token: user.token, tweetId: props._id }),
@@ -23,7 +25,7 @@ function Tweet(props) {
   };
 
   const handleDelete = () => {
-    fetch('http://${BACKEND_SERVER}:3000/tweets', {
+    fetch('${apiUrl}:3000/tweets', {
       method: 'DELETE',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ token: user.token, tweetId: props._id }),

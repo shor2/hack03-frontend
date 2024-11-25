@@ -2,15 +2,17 @@ import { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import Link from 'next/link';
 import styles from '../styles/Trends.module.css';
+require('dotenv').config();
 
 function Trends() {
   const user = useSelector((state) => state.user.value);
   const tweetsData = useSelector((state) => state.tweets.value);
+  const apiUrl = process.env.API_URL;
 
   const [trendsData, setTrendsData] = useState([]);
 
   useEffect(() => {
-    fetch(`http://${BACKEND_SERVER}:3000/tweets/trends/${user.token}`)
+    fetch(`${apiUrl}:3000/tweets/trends/${user.token}`)
       .then(response => response.json())
       .then(data => {
         data.result && setTrendsData(data.trends);

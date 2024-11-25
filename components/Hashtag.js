@@ -9,10 +9,13 @@ import Tweet from './Tweet';
 import Trends from './Trends';
 import Image from 'next/image';
 
+require('dotenv').config();
+
 function Hashtag() {
   const dispatch = useDispatch();
   const user = useSelector((state) => state.user.value);
   const tweetsData = useSelector((state) => state.tweets.value);
+  const apiUrl = process.env.API_URL; // Accès à la variable d'environnement
 
   // Redirect to /login if not logged in
   const router = useRouter();
@@ -30,7 +33,7 @@ function Hashtag() {
 
     setQuery('#' + hashtag);
 
-    fetch(`http://${BACKEND_SERVER}:3000/tweets/hashtag/${user.token}/${hashtag}`)
+    fetch(`${apiUrl}:3000/tweets/hashtag/${user.token}/${hashtag}`)
       .then(response => response.json())
       .then(data => {
         data.result && dispatch(loadTweets(data.tweets));

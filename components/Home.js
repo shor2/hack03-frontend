@@ -8,10 +8,12 @@ import Image from 'next/image';
 import LastTweets from './LastTweets';
 import Trends from './Trends';
 import styles from '../styles/Home.module.css';
+require('dotenv').config();
 
 function Home() {
   const dispatch = useDispatch();
   const user = useSelector((state) => state.user.value);
+  const apiUrl = process.env.API_URL; // Accès à la variable d'environnement
 
   // Redirect to /login if not logged in
   const router = useRouter();
@@ -27,7 +29,7 @@ function Home() {
       return;
     }
 
-    fetch(`http://${BACKEND_SERVER}:3000/tweets/all/${user.token}`)
+    fetch(`${apiUrl}:3000/tweets/all/${user.token}`)
       .then(response => response.json())
       .then(data => {
         data.result && dispatch(loadTweets(data.tweets));
@@ -41,7 +43,7 @@ function Home() {
   };
 
   const handleSubmit = () => {
-    fetch('http://${BACKEND_SERVER}:3000/tweets', {
+    fetch('${apiUrl}:3000/tweets', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ token: user.token, content: newTweet }),
