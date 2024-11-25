@@ -21,8 +21,9 @@ function SignUp() {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
 
+  const MyUrl = `${apiUrl}:3000/users/signup`
   const handleSubmit = () => {
-    fetch(`${apiUrl}:3000/users/signup`, {
+    fetch(MyUrl, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ firstName, username, password }),
