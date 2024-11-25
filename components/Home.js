@@ -43,7 +43,7 @@ function Home() {
   };
 
   const handleSubmit = () => {
-    fetch('${apiUrl}:3000/tweets', {
+    fetch(`${apiUrl}:3000/tweets`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ token: user.token, content: newTweet }),
