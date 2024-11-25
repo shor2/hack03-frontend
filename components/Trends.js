@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import Link from 'next/link';
 import styles from '../styles/Trends.module.css';
-require('dotenv').config();
+import 'dotenv/config'
 
 function Trends() {
   const user = useSelector((state) => state.user.value);

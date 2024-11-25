@@ -6,7 +6,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import Moment from 'react-moment';
 import styles from '../styles/Tweet.module.css';
-require('dotenv').config();
+import 'dotenv/config'
 
 function Tweet(props) {
   const dispatch = useDispatch();

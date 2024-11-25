@@ -8,7 +8,7 @@ import Image from 'next/image';
 import LastTweets from './LastTweets';
 import Trends from './Trends';
 import styles from '../styles/Home.module.css';
-require('dotenv').config();
+import 'dotenv/config'
 
 function Home() {
   const dispatch = useDispatch();

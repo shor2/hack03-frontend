@@ -8,8 +8,7 @@ import Link from 'next/link';
 import Tweet from './Tweet';
 import Trends from './Trends';
 import Image from 'next/image';
-
-require('dotenv').config();
+import 'dotenv/config'
 
 function Hashtag() {
   const dispatch = useDispatch();
