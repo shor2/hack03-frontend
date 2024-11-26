@@ -4,12 +4,10 @@ import { useDispatch, useSelector } from 'react-redux';
 import { login } from '../reducers/user';
 import Image from 'next/image';
 import styles from '../styles/SignIn.module.css';
-import 'dotenv/config'
 
 function SignIn() {
   const dispatch = useDispatch();
   const user = useSelector((state) => state.user.value);
-  const apiUrl = process.env.API_URL;
 
   // Redirect to /home if logged in
   const router = useRouter();
@@ -21,7 +19,7 @@ function SignIn() {
   const [password, setPassword] = useState('');
 
   const handleSubmit = () => {
-    fetch('${apiUrl}/users/signin', {
+    fetch('https://kvhfuzdc3c.eu-west-3.awsapprunner.com/users/signin', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ username, password }),
