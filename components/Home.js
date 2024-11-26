@@ -29,7 +29,7 @@ function Home() {
       return;
     }
 
-    fetch(`${apiUrl}:3000/tweets/all/${user.token}`)
+    fetch(`${apiUrl}/tweets/all/${user.token}`)
       .then(response => response.json())
       .then(data => {
         data.result && dispatch(loadTweets(data.tweets));
@@ -43,7 +43,7 @@ function Home() {
   };
 
   const handleSubmit = () => {
-    fetch(`${apiUrl}:3000/tweets`, {
+    fetch(`${apiUrl}/tweets`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ token: user.token, content: newTweet }),

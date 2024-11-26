@@ -14,7 +14,7 @@ function Tweet(props) {
   const apiUrl = process.env.API_URL;
 
   const handleLike = () => {
-    fetch('${apiUrl}:3000/tweets/like', {
+    fetch('${apiUrl}/tweets/like', {
       method: 'PUT',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ token: user.token, tweetId: props._id }),
@@ -25,7 +25,7 @@ function Tweet(props) {
   };
 
   const handleDelete = () => {
-    fetch('${apiUrl}:3000/tweets', {
+    fetch('${apiUrl}/tweets', {
       method: 'DELETE',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ token: user.token, tweetId: props._id }),

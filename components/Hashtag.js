@@ -32,7 +32,7 @@ function Hashtag() {
 
     setQuery('#' + hashtag);
 
-    fetch(`${apiUrl}:3000/tweets/hashtag/${user.token}/${hashtag}`)
+    fetch(`${apiUrl}/tweets/hashtag/${user.token}/${hashtag}`)
       .then(response => response.json())
       .then(data => {
         data.result && dispatch(loadTweets(data.tweets));
