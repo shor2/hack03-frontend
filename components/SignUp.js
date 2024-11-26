@@ -21,7 +21,7 @@ function SignUp() {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
 
-  const MyUrl = `${apiUrl}/users/signup`
+  const MyUrl = `${apiUrl}/users/signup`;
   const handleSubmit = () => {
     fetch(MyUrl, {
       method: 'POST',
